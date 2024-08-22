@@ -3,13 +3,13 @@ const tracks = [
     name: "Lost in the City Lights",
     author: "Cosmo Sheldrake",
     url: "https://res.cloudinary.com/dyt4p8agq/video/upload/v1724272509/kj7zpnrpkjfyrnvjedhi.mp3",
-    image: "../images/cover-1.png",
+    image: "../images/cover1.png",
   },
   {
     name: "Forest Lullaby",
     author: "Lesfm",
     url: "https://res.cloudinary.com/dyt4p8agq/video/upload/v1724272510/inmcwbjixnkx0arebpjr.mp3",
-    image: "../images/cover-2.png",
+    image: "../images/cover2.png",
   },
 ];
 
@@ -31,7 +31,7 @@ const setPlayer = (trackNumber) => {
   progress.value = 0;
   player.pause();
   const playImg = document.getElementsByClassName("play-img")[0];
-  playImg.src = "../images/Play_fill.svg";
+  playImg.src = "../images/PlayFill.svg";
 };
 
 const changeTrack = (direction) => {
@@ -80,10 +80,10 @@ playBtn.addEventListener("click", () => {
   const playImg = document.getElementsByClassName("play-img")[0];
   if (player.paused) {
     player.play();
-    playImg.src = "../images/Pause_fill.svg";
+    playImg.src = "../images/PauseFill.svg";
   } else {
     player.pause();
-    playImg.src = "../images/Play_fill.svg";
+    playImg.src = "../images/PlayFill.svg";
   }
 });
 
