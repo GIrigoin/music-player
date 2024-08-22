@@ -29,6 +29,27 @@ const setPlayer = (trackNumber) => {
   const progress = document.getElementById("progress");
   progress.min = 0;
   progress.value = 0;
+  player.pause();
+  const playImg = document.getElementsByClassName("play-img")[0];
+  playImg.src = "../images/Play_fill.svg";
+};
+
+const changeTrack = (direction) => {
+  if (direction === "next") {
+    if (currentTrack + 1 >= tracks.length) {
+      currentTrack = 0;
+    } else {
+      currentTrack++;
+    }
+  }
+  if (direction === "prev") {
+    if (currentTrack <= 0) {
+      currentTrack = tracks.length - 1;
+    } else {
+      currentTrack--;
+    }
+  }
+  setPlayer(currentTrack);
 };
 
 player.addEventListener("durationchange", (event) => {
@@ -56,12 +77,21 @@ setPlayer(currentTrack);
 
 const playBtn = document.getElementById("play");
 playBtn.addEventListener("click", () => {
+  const playImg = document.getElementsByClassName("play-img")[0];
   if (player.paused) {
     player.play();
+    playImg.src = "../images/Pause_fill.svg";
   } else {
     player.pause();
+    playImg.src = "../images/Play_fill.svg";
   }
 });
+
+const nextBtn = document.getElementById("next");
+nextBtn.addEventListener("click", () => changeTrack("next"));
+
+const prevBtn = document.getElementById("prev");
+prevBtn.addEventListener("click", () => changeTrack("prev"));
 
 const progresBar = document.getElementById("progress");
 progresBar.addEventListener("input", () => {
